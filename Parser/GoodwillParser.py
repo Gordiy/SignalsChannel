@@ -4,6 +4,9 @@ from .BaseParser import BaseParser
 
 
 class GoodwillParser(BaseParser):
+    """
+    Message parser for Goodwill Bot M5 trading signals.
+    """
     def parse_message(self, text):
         stop = ("❌", "✅")
         if stop[0] not in text or stop[1] not in text:
