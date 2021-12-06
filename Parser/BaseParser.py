@@ -5,7 +5,7 @@ class BaseParser:
     def __init__(self):
         self.__time = None
         self.__currency = None
-        self.__action = Action().action
+        self.__action = Action()
 
         self.__offer = {}
 
