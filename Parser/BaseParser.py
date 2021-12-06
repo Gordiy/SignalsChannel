@@ -13,6 +13,14 @@ class BaseParser:
         pass
 
     @property
+    def offer(self):
+        return {
+            "time": self.__time,
+            "currency": self.__currency,
+            "action": self.__action
+        }
+
+    @property
     def time(self):
         return self.time
 
