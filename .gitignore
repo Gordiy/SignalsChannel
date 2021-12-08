@@ -3,3 +3,7 @@ tests.py
 *.session-journal
 venv
 .idea
+static/additional_text.txt
+config.py
+
+**_pycache__/

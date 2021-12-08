@@ -1,6 +1,6 @@
 class Action:
     def __init__(self):
-        self.__action = ("вниз", "вверх")
+        self.__action = ("ВНИЗ", "ВВЕРХ")
         self.__buy_action = ('buy', "вверх", "верх")
         self.__sell_action = ("sell", "вниз")
 
