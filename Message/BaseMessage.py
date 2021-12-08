@@ -5,3 +5,6 @@ class Message:
     @property
     def message(self):
         return self.__message
+
+    def create_message(self, offer, addition_text):
+        pass
