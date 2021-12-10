@@ -15,7 +15,7 @@ class SmartTraderParser(BaseParser):
 
             try:
                 self.__currency = currency[0]
-            except KeyError:
+            except IndexError:
                 # if currency not found, exit from function
                 return
 
