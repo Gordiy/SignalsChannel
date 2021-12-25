@@ -59,6 +59,8 @@ async def smart_handler(event):
             our_message_binomo = BinomoMessage(None).create_message(offer, add_text)
             await client.send_message(entity=entity, message=our_message_pocket)
             await client.send_message(entity=entity, message=our_message_binomo)
+        else:
+            pass
 
 
 client.start()
