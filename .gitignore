@@ -7,3 +7,6 @@ static/additional_text.txt
 config.py
 
 **_pycache__/
+
+.DS_Store
+.vscode/

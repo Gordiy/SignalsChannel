@@ -1,8 +1,8 @@
 import config
+from Message.BinomoMessage import BinomoMessage
+from Message.PocketOptionMessage import PocketOptionMessage
 from Parser.GoodwillParser import GoodwillParser
 from Parser.SmartTraderParser import SmartTraderParser
-from Message.PocketOptionMessage import PocketOptionMessage
-from Message.BinomoMessage import BinomoMessage
 from telethon import TelegramClient, events
 
 client = TelegramClient(config.SESSION, config.TG_APP_ID, config.TG_APP_SECRET)
@@ -24,7 +24,7 @@ def get_additional_text(additional_file_name):
 @client.on(
     events.NewMessage(
         chats=config.TG_READ_MSG_CHAT,
-        pattern=r"(?i).*{}".format(config.TRADER_PATTERNS["goodwill"])
+        pattern=r"(?i).*{}".format(config.TRADER_PATTERNS["goodwill"]),
     )
 )
 async def goodwill_handler(event):
@@ -34,7 +34,9 @@ async def goodwill_handler(event):
         offer = GoodwillParser().parse_message(event.message.text.lower())
         if offer:
             add_text = get_additional_text("additional_text.txt")
-            our_message_pocket = PocketOptionMessage(None).create_message(offer, add_text)
+            our_message_pocket = PocketOptionMessage(None).create_message(
+                offer, add_text
+            )
             our_message_binomo = BinomoMessage(None).create_message(offer, add_text)
             await client.send_message(entity=entity, message=our_message_pocket)
             await client.send_message(entity=entity, message=our_message_binomo)
@@ -51,7 +53,9 @@ async def smart_handler(event):
         offer = SmartTraderParser().parse_message(event.message.text.lower())
         if offer and int(offer["time"]) <= 5:
             add_text = get_additional_text("additional_text.txt")
-            our_message_pocket = PocketOptionMessage(None).create_message(offer, add_text)
+            our_message_pocket = PocketOptionMessage(None).create_message(
+                offer, add_text
+            )
             our_message_binomo = BinomoMessage(None).create_message(offer, add_text)
             await client.send_message(entity=entity, message=our_message_pocket)
             await client.send_message(entity=entity, message=our_message_binomo)
