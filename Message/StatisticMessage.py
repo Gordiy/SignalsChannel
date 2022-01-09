@@ -1,7 +1,7 @@
-from .BaseMessage import BaseMessage
+from .BaseMessage import Message
 
 
-class StatisticMessage(BaseMessage):
+class StatisticMessage(Message):
     """ Define statistic message"""
     def create_message(self, text, additional_text):
         return f"{text} {additional_text}"

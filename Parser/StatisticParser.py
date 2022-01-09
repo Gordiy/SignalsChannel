@@ -5,9 +5,9 @@ class StatisticParser(BaseParser):
     def __goodwill_statistic(self, text):
         words = ("❌", "✅")
         if words[0] in text:
-            return True
-        else:
             return False
+        else:
+            return True
 
     def __smart_trader_statistic(self, text):
         words = ("плюс", "минус")
