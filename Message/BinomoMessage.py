@@ -14,4 +14,4 @@ class BinomoMessage(Message):
         time_change = datetime.timedelta(minutes=int(offer["time"]))
         time = date_and_time + time_change
 
-        return f"BINOMO \n💰{offer['currency'].upper()} - {time.hour}:{time.minute} {offer['action']} \n \n{addition_text}"
+        return f"BINOMO - 💰{offer['currency'].upper()} - {time.hour}:{time.minute} {offer['action']}"

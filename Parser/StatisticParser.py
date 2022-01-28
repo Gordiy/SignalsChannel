@@ -15,6 +15,8 @@ class StatisticParser(BaseParser):
             return True
         elif words[1]:
             return False
+        else:
+            return None
 
     def parse_message(self, text, trader):
         if trader == "smart_trader":
