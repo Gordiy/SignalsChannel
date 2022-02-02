@@ -7,7 +7,27 @@ class SmartTraderParser(BaseParser):
     Message parser for Smart Trader (Трейдер с умом) trading signals.
     """
     def parse_message(self, text):
-        stop = ('через',)
+        stop = ('через', 'взял')
+
+        if stop[1] in text.lower():
+            minutes = ""
+            for i in range(len(text)):
+                if text[i].isdigit():
+                    minutes += text[i]
+
+            if minutes != "":
+                self.__time = int(minutes[0:2])
+
+            offer_act = self._action.action(text)
+            self._action = offer_act
+
+            if self.__time and self._action:
+                return {
+                    "time": self.__time,
+                    "currency": "Взял еще",
+                    "action": self._action
+                }
+
         if stop[0] not in text:
             currency = re.findall(r'\b\w{3}/\w{3}\b', text)
             if not currency:

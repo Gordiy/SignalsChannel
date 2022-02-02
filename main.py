@@ -27,9 +27,9 @@ def statistics_message(text, add_text, trader):
     statistic = StatisticParser().parse_message(text, trader)
     
     if statistic is not None and statistic:
-        return StatisticMessage(None).create_message("Плюс✅✅✅\n", add_text)
+        return StatisticMessage(None).create_message("Плюс ✅\n", add_text)
     elif statistic is not None and not statistic:
-        return StatisticMessage(None).create_message("Минуc😢😢😢, следующую сделку ставим с плечом 2,5.\n", add_text)
+        return StatisticMessage(None).create_message("Минуc ❌, следующую сделку ставим с плечом 2,5.\n", add_text)
 
 @client.on(
     events.NewMessage(
